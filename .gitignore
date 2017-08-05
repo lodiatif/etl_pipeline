@@ -53,4 +53,4 @@ ENV/
 .spyderproject
 .ropeproject
 .idea/
-example/*.csv
+example/simple_transfer.csv

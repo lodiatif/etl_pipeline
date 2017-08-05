@@ -1,3 +1,5 @@
+import csv
+
 import requests
 
 
@@ -39,3 +41,14 @@ class HttpJSONExtractor(HttpExtractor):
         if type(record_set) == dict:
             record_set = [record_set]
         return record_set
+
+
+class CSVExtractor:
+    def __init__(self, csv_file_path, **kwargs):
+        self.csv_file_path = csv_file_path
+        self.kwargs = kwargs
+
+    def __call__(self):
+        reader = csv.reader(open(self.csv_file_path, 'r'), **self.kwargs)
+        next(reader)
+        return reader

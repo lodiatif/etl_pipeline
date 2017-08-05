@@ -8,7 +8,7 @@ from etl.extractors import HttpJSONExtractor
 from etl.loaders import CSVLoader
 import os
 
-# Initialise in-stream that fetches data from API.
+# Initialise instream that fetches data from API.
 #
 # instream by itself doesnt fetch data, it needs an extractor to do that. Extractors are callable classes that have
 # the logic of reading data from source and handing it over to instream in the form of an iterator.
@@ -29,7 +29,7 @@ instream = pipe.instream(extractor=HttpJSONExtractor, extractor_config={'url': d
 # etl-pipeline has a default loader for loading data in CSV file.
 # To initialise outstream, we pass CSVLoader class and provide parameters needed to initialize it.
 
-filepath = "%s/%s" % (os.path.dirname(__file__), 'sample_transfer.csv')
+filepath = "%s/'simple_transfer.csv'" % os.path.dirname(__file__)
 headers = ['id', 'name', 'username', 'email', 'address', 'phone', 'website', 'company']
 outstream = pipe.outstream(loader=CSVLoader, loader_config={'filepath': filepath, 'headers': headers})
 
